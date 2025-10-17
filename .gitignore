@@ -1,0 +1,31 @@
+# ----------------------------
+# Node / Frontend (React + Vite)
+# ----------------------------
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# ----------------------------
+# Python / ML Models
+# ----------------------------
+ml_models/**/__pycache__/
+ml_models/**/*.pyc
+ml_models/**/*.pyo
+ml_models/**/*.pyd
+ml_models/**/env/
+ml_models/**/venv/
+ml_models/**/.env
+
+# ----------------------------
+# General OS / IDE
+# ----------------------------
+.DS_Store
+*.log
+.vscode/
+.idea/
+*.swp

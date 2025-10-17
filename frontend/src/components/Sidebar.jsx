@@ -1,0 +1,16 @@
+import React from "react";
+
+const Sidebar = () => {
+  return (
+    <div className="w-60 h-screen bg-gray-200 dark:bg-gray-800 p-4">
+      <h2 className="text-lg font-semibold mb-4">Models</h2>
+      <ul>
+        <li className="mb-2 cursor-pointer hover:text-blue-500">Home</li>
+        <li className="mb-2 cursor-pointer hover:text-blue-500">Contributors</li>
+        <li className="mb-2 cursor-pointer hover:text-blue-500">Docs</li>
+      </ul>
+    </div>
+  );
+};
+
+export default Sidebar;
