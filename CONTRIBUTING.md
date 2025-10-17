@@ -15,7 +15,7 @@ git checkout -b feature/my-new-model
 ___
 
 ## 2️⃣ Testing
-Frontend
+### Frontend
 ```bash
 cd frontend
 npm install
@@ -23,14 +23,14 @@ npm run dev
 ```
 - Open browser at http://localhost:5173. Verify UI - changes, responsiveness, and card integration.
 
-## ML Models
+### ML Models
 ```bash
 cd ml_models/<YOUR_MODEL_NAME>
 pip install -r requirements.txt
 uvicorn app:app --reload
 ```
 - Test `/predict` endpoint using Postman, curl, or frontend integration. 
->[Warning]
+>[!WARNING]
 >⚠️ Keep models lightweight. For large models, host externally and download them in `app.py`.
 
 ## 3️⃣ Pull Request Guidelines
