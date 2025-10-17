@@ -1,10 +1,11 @@
+---
 name: "🚀 Add New Model or Frontend Feature"
 about: "Use this template to propose a new ML model or frontend improvement aligned with Hackmentees’ goal"
 title: "[FEATURE] - Your Model/Feature Name"
-labels: enhancement, hacktoberfest
+labels: beginner, enhancement, hacktoberfest
 assignees: ''
-
 ---
+
 
 ## Type of Contribution
 - [ ] ML Model
