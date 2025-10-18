@@ -2,7 +2,11 @@ import React from "react";
 import Home from "./pages/Home";
 
 function App() {
-  return <Home />;
+  return (
+    <div className="App">
+      <Home />
+    </div>
+  );
 }
 
 export default App;
