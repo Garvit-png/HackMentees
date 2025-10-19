@@ -132,7 +132,7 @@ export default function Home() {
               </div>
 
               {/* Desktop Navigation */}
-              <NavigationMenu className="hidden lg:flex">
+              <NavigationMenu className="hidden lg:flex dark:text-white">
                 <NavigationMenuList>
                   <NavigationMenuItem>
                     <NavigationMenuLink className="font-medium text-sm px-4 py-2 hover:text-primary transition-colors" href="#home">
@@ -162,7 +162,7 @@ export default function Home() {
                 <Button onClick={handleExploreModels} size="sm" className="hidden sm:flex">
                   Explore Models
                 </Button>
-                <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+                <ThemeToggle className="dark:text-white" darkMode={darkMode} setDarkMode={setDarkMode} />
                 
                 {/* Mobile Menu */}
                 <Sheet>
@@ -199,7 +199,7 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
 
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 tracking-tight dark:text-white">
               Welcome to{" "}
               <span className="bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
                 HackMentees
@@ -230,7 +230,7 @@ export default function Home() {
                 className="group text-lg hover:scale-105 transition-all duration-300 flex items-center"
                 asChild
               >
-                <a href="#features" className="flex items-center">
+                <a href="#features" className="flex items-center dark:text-white">
                   Learn More
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </a>
@@ -265,19 +265,19 @@ export default function Home() {
         <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="container mx-auto">
             <div className="text-center mb-20">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 dark:text-white">
                 Why Choose{" "}
                 <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                   HackMentees
                 </span>
                 ?
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto dark:text-white">
                 Built by developers, for developers. Everything you need to start contributing to open source.
               </p>
             </div>
             
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 dark:text-white">
               <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-primary/20">
                 <CardHeader>
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -327,7 +327,7 @@ export default function Home() {
         <section id="about" className="py-24 px-4 sm:px-6 lg:px-8">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 dark:text-white">
                 What is{" "}
                 <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                   HackMentees
@@ -350,7 +350,7 @@ export default function Home() {
               <TabsContent value="overview" className="mt-8">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2 dark:text-white">
                       <Globe className="h-5 w-5" />
                       Project Overview
                     </CardTitle>
@@ -490,8 +490,8 @@ export default function Home() {
                   className="hover:scale-105 transition-transform duration-300"
                   asChild
                 >
-                  <a href="https://github.com/georgioupanayiotis/HackMentees/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="flex items-center">
-                    <Zap className="w-5 h-5 mr-2" />
+                  <a href="https://github.com/georgioupanayiotis/HackMentees/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="flex items-center text-black dark:text-white">
+                    <Zap className="w-5 h-5 mr-2 text-black dark:text-white" />
                     Start Contributing
                   </a>
                 </Button>
