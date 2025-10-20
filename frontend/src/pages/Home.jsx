@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { models } from "../data/models";
 import ModelCard from "../components/ModelCard";
 import Sidebar from "../components/Sidebar";
@@ -11,15 +11,6 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
-  NavigationMenu, 
-  NavigationMenuContent, 
-  NavigationMenuItem, 
-  NavigationMenuLink, 
-  NavigationMenuList, 
-  NavigationMenuTrigger 
-} from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { 
   Github, 
   Star, 
   GitFork, 
@@ -30,7 +21,6 @@ import {
   Rocket, 
   Brain, 
   Globe, 
-  Menu,
   ChevronRight,
   ArrowRight,
   ExternalLink,
@@ -41,22 +31,7 @@ import {
   MessageCircle
 } from "lucide-react";
 
-export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [showModels, setShowModels] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleExploreModels = () => {
-    setShowModels(true);
-  };
+export default function Home({ showModels, setShowModels, darkMode, setDarkMode }) {
 
   if (showModels) {
     return (
@@ -80,7 +55,7 @@ export default function Home() {
         </header>
 
         <div className="flex">
-          <Sidebar />
+          <Sidebar isOpen={true} onClose={() => {}} />
           <main className="flex-1 p-6">
             <div className="container">
               <div className="mb-8">
@@ -113,83 +88,10 @@ export default function Home() {
   return (
     <div className={darkMode ? "dark" : ""}>
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
-        {/* Navigation Header */}
-        <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled 
-            ? 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b' 
-            : 'bg-transparent'
-        }`}>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              {/* Logo */}
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg">
-                  <span className="text-primary-foreground font-bold text-lg">H</span>
-                </div>
-                <div className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                  HackMentees
-                </div>
-              </div>
-
-              {/* Desktop Navigation */}
-              <NavigationMenu className="hidden lg:flex dark:text-white">
-                <NavigationMenuList>
-                  <NavigationMenuItem>
-                    <NavigationMenuLink className="font-medium text-sm px-4 py-2 hover:text-primary transition-colors" href="#home">
-                      Home
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <NavigationMenuLink className="font-medium text-sm px-4 py-2 hover:text-primary transition-colors" href="#features">
-                      Features
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <NavigationMenuLink className="font-medium text-sm px-4 py-2 hover:text-primary transition-colors" href="#about">
-                      About
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <NavigationMenuLink className="font-medium text-sm px-4 py-2 hover:text-primary transition-colors" href="#contribute">
-                      Contribute
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                </NavigationMenuList>
-              </NavigationMenu>
-
-              {/* Actions */}
-              <div className="flex items-center space-x-4">
-                <Button onClick={handleExploreModels} size="sm" className="hidden sm:flex">
-                  Explore Models
-                </Button>
-                <ThemeToggle className="dark:text-white" darkMode={darkMode} setDarkMode={setDarkMode} />
-                
-                {/* Mobile Menu */}
-                <Sheet>
-                  <SheetTrigger asChild>
-                    <Button variant="ghost" size="icon" className="lg:hidden">
-                      <Menu className="h-5 w-5" />
-                    </Button>
-                  </SheetTrigger>
-                  <SheetContent>
-                    <div className="flex flex-col space-y-4 mt-8">
-                      <a href="#home" className="text-lg font-medium">Home</a>
-                      <a href="#features" className="text-lg font-medium">Features</a>
-                      <a href="#about" className="text-lg font-medium">About</a>
-                      <a href="#contribute" className="text-lg font-medium">Contribute</a>
-                      <Button onClick={handleExploreModels} className="w-full mt-4">
-                        Explore Models
-                      </Button>
-                    </div>
-                  </SheetContent>
-                </Sheet>
-              </div>
-            </div>
-          </div>
-        </header>
 
         {/* Hero Section */}
-        <section id="home" className="relative min-h-screen flex items-center justify-center pt-16">
+        <section id="home" className="relative min-h-screen flex items-center justify-center pt-28 md:pt-20 lg:pt-16">
+
           {/* Animated Background */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
@@ -207,7 +109,7 @@ export default function Home() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl sm:text-2xl lg:text-3xl mb-12 text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl sm:text-2xl lg:text-3xl mb-12 text-muted-foreground dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
               A <span className="font-semibold text-primary">beginner-friendly</span> hub for 
               <span className="font-semibold text-primary"> machine learning</span> models and 
               <span className="font-semibold text-primary"> frontend</span> contributions
@@ -216,7 +118,7 @@ export default function Home() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
               <Button 
-                onClick={handleExploreModels}
+                onClick={() => setShowModels(true)}
                 size="lg" 
                 className="group text-lg hover:scale-105 transition-all duration-300 flex items-center"
               >
@@ -239,22 +141,22 @@ export default function Home() {
 
             {/* Stats Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              <Card className="border-primary/20 hover:border-primary/40 transition-colors">
+              <Card className="border-primary/20 hover:border-primary/40 transition-colors dark:border-gray-700 dark:bg-gray-800">
                 <CardContent className="pt-6 text-center">
                   <div className="text-3xl font-bold text-primary mb-2">50+</div>
-                  <div className="text-muted-foreground font-medium">Contributors</div>
+                  <div className="text-muted-foreground dark:text-gray-300 font-medium">Contributors</div>
                 </CardContent>
               </Card>
-              <Card className="border-primary/20 hover:border-primary/40 transition-colors">
+              <Card className="border-primary/20 hover:border-primary/40 transition-colors dark:border-gray-700 dark:bg-gray-800">
                 <CardContent className="pt-6 text-center">
                   <div className="text-3xl font-bold text-primary mb-2">25+</div>
-                  <div className="text-muted-foreground font-medium">ML Models</div>
+                  <div className="text-muted-foreground dark:text-gray-300 font-medium">ML Models</div>
                 </CardContent>
               </Card>
-              <Card className="border-primary/20 hover:border-primary/40 transition-colors">
+              <Card className="border-primary/20 hover:border-primary/40 transition-colors dark:border-gray-700 dark:bg-gray-800">
                 <CardContent className="pt-6 text-center">
                   <div className="text-3xl font-bold text-primary mb-2">100%</div>
-                  <div className="text-muted-foreground font-medium">Open Source</div>
+                  <div className="text-muted-foreground dark:text-gray-300 font-medium">Open Source</div>
                 </CardContent>
               </Card>
             </div>
@@ -262,7 +164,7 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/30 dark:bg-gray-900/50">
           <div className="container mx-auto">
             <div className="text-center mb-20">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 dark:text-white">
@@ -272,49 +174,49 @@ export default function Home() {
                 </span>
                 ?
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto dark:text-white">
+              <p className="text-xl text-muted-foreground dark:text-gray-300 max-w-3xl mx-auto">
                 Built by developers, for developers. Everything you need to start contributing to open source.
               </p>
             </div>
             
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 dark:text-white">
-              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-primary/20">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-primary/20 dark:border-gray-700 dark:bg-gray-800">
                 <CardHeader>
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Brain className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle>ML Model Hub</CardTitle>
+                  <CardTitle className="dark:text-white">ML Model Hub</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base">
+                  <CardDescription className="text-base dark:text-gray-300">
                     A curated collection of lightweight machine learning models with easy-to-use APIs and comprehensive documentation.
                   </CardDescription>
                 </CardContent>
               </Card>
               
-              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-primary/20">
+              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-primary/20 dark:border-gray-700 dark:bg-gray-800">
                 <CardHeader>
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Code className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle>Modern Frontend</CardTitle>
+                  <CardTitle className="dark:text-white">Modern Frontend</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base">
+                  <CardDescription className="text-base dark:text-gray-300">
                     Built with React and Vite, featuring responsive design, dark mode, and smooth animations for the best user experience.
                   </CardDescription>
                 </CardContent>
               </Card>
               
-              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-primary/20 sm:col-span-2 lg:col-span-1">
+              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-primary/20 dark:border-gray-700 dark:bg-gray-800 sm:col-span-2 lg:col-span-1">
                 <CardHeader>
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Heart className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle>Beginner Friendly</CardTitle>
+                  <CardTitle className="dark:text-white">Beginner Friendly</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base">
+                  <CardDescription className="text-base dark:text-gray-300">
                     Clear contribution guidelines, templates, and mentorship to help newcomers make their first open-source contribution.
                   </CardDescription>
                 </CardContent>
