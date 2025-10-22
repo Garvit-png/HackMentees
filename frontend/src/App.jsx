@@ -1,11 +1,17 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+=======
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+>>>>>>> a28133d (Updated navbar and theme consistency changes)
 import Home from "./pages/Home";
 import About from "./pages/About";
 
 function App() {
   const [showModels, setShowModels] = useState(false);
+<<<<<<< HEAD
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("theme") === "dark";
   });
@@ -58,6 +64,53 @@ function App() {
       </div>
       </>
     
+=======
+  const [darkMode, setDarkMode] = useState(false);
+  
+  const handleExploreModels = () => {
+    setShowModels(true);
+  };
+  
+  return (
+    <div className={darkMode ? "dark" : ""}>
+      <Routes>
+        <Route 
+          path="/" 
+          element={
+            <Home 
+              showModels={showModels} 
+              setShowModels={setShowModels}
+              darkMode={darkMode}
+              setDarkMode={setDarkMode}
+              onExploreModels={handleExploreModels}
+            />
+          } 
+        />
+        <Route 
+          path="/about" 
+          element={
+            <About 
+              darkMode={darkMode}
+              setDarkMode={setDarkMode}
+              onExploreModels={handleExploreModels}
+            />
+          } 
+        />
+        <Route 
+          path="/" 
+          element={
+            <Home 
+              showModels={showModels} 
+              setShowModels={setShowModels}
+              darkMode={darkMode}
+              setDarkMode={setDarkMode}
+              onExploreModels={handleExploreModels}
+            />
+          } 
+        />
+      </Routes>
+    </div>
+>>>>>>> a28133d (Updated navbar and theme consistency changes)
   );
 }
 

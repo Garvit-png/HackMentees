@@ -5,6 +5,7 @@ import Sidebar from "../components/Sidebar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+<<<<<<< HEAD
 import Navbar from "../components/Navbar"; 
 import {
   Tabs,
@@ -15,10 +16,59 @@ import {
 import { Github, Star, GitFork, Zap, Heart, Code, Users, Rocket, Brain, Globe, 
 ChevronRight, ArrowRight, ExternalLink, Trophy, Target, Sparkles, Book, MessageCircle } from "lucide-react"; 
 
+=======
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Sun, Moon } from "lucide-react";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { 
+  NavigationMenu, 
+  NavigationMenuContent, 
+  NavigationMenuItem, 
+  NavigationMenuLink, 
+  NavigationMenuList, 
+  NavigationMenuTrigger 
+} from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { 
+  Github, 
+  Star, 
+  GitFork, 
+  Zap, 
+  Heart, 
+  Code, 
+  Users, 
+  Rocket, 
+  Brain, 
+  Globe, 
+  Menu,
+  ChevronRight,
+  ArrowRight,
+  ExternalLink,
+  Trophy,
+  Target,
+  Sparkles,
+  Book,
+  MessageCircle
+} from "lucide-react";
+
+export default function Home({ showModels, setShowModels, darkMode, setDarkMode, onExploreModels }) {
+  const [scrolled, setScrolled] = useState(false);
+>>>>>>> a28133d (Updated navbar and theme consistency changes)
 
 export default function Home({ showModels, setShowModels, darkMode, setDarkMode }) {
 
+<<<<<<< HEAD
   const handleExploreModels = () => setShowModels(true);
+=======
+  const handleExploreModels = () => {
+    if (onExploreModels) {
+      onExploreModels();
+    } else {
+      setShowModels(true);
+    }
+  };
+>>>>>>> a28133d (Updated navbar and theme consistency changes)
 
   // If showModels is true - Show models list
   if (showModels) {
@@ -36,6 +86,23 @@ export default function Home({ showModels, setShowModels, darkMode, setDarkMode 
             </Button>
             <Separator orientation="vertical" className="mx-4 h-6" />
             <h1 className="text-lg font-semibold">AI Model Hub</h1>
+<<<<<<< HEAD
+=======
+            <div className="ml-auto">
+              <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setDarkMode(!darkMode)}
+              className="dark:text-white"
+               >
+              {darkMode ? (
+              <Sun className="h-5 w-5" />
+              ) : (
+              <Moon className="h-5 w-5" />
+              )}
+              </Button>
+            </div>
+>>>>>>> a28133d (Updated navbar and theme consistency changes)
           </div>
         </header>
 
@@ -73,12 +140,113 @@ export default function Home({ showModels, setShowModels, darkMode, setDarkMode 
   
   return (
     <div className={darkMode ? "dark" : ""}>
+<<<<<<< HEAD
       {/* ✅ Use Navbar component here */}
       <Navbar 
         onExploreModels={handleExploreModels} 
         darkMode={darkMode} 
         setDarkMode={setDarkMode} 
       />
+=======
+      <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+        {/* Navigation Header */}
+    <header
+       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+        ? 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b'
+        : 'bg-transparent'
+      }`}
+      >
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-between items-center h-16">
+      {/* Logo */}
+      <div className="flex items-center space-x-3">
+          <div className="bg-black dark:bg-white text-white dark:text-black font-bold w-9 h-9 flex items-center justify-center rounded-xl">
+            H
+          </div>
+          <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+            Hack<span className="text-gray-600 dark:text-gray-300">Mentees</span>
+          </h1>
+        </div>
+
+      {/* Navigation Menu */}
+      <NavigationMenu className="hidden lg:flex items-center space-x-6">
+        <NavigationMenuList className="flex space-x-6">
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Link
+                to="/"
+                className="text-base font-medium text-foreground hover:text-primary transition-colors"
+              >
+                Home
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Link
+                to="/about"
+                className="text-base font-medium text-foreground hover:text-primary transition-colors"
+              >
+                About
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="#contribute"
+              className="text-base font-medium text-foreground hover:text-primary transition-colors"
+            >
+              Contribute
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+ 
+      {/* Right-side actions */}
+      <div className="flex items-center space-x-4">
+        <Button
+          onClick={handleExploreModels}
+          size="lg"
+          className="bg-black dark:bg-white text-white dark:text-black font-medium px-4 py-2 rounded-md hover:opacity-80 transition"
+        >
+          Explore Models
+        </Button>
+
+        {/* Theme Toggle */}
+        <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-full hover:scale-110 transition-transform duration-300 shadow-md"
+        >
+            {darkMode ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-700" />}
+        </button>         
+
+      
+        {/* Mobile Menu */}
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="lg:hidden">
+              <Menu className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent>
+            <div className="flex flex-col space-y-4 mt-8">
+              <Link to="/" className="text-lg font-medium">Home</Link>
+              <Link to="/about" className="text-lg font-medium">About</Link>
+              <a href="#contribute" className="text-lg font-medium">Contribute</a>
+              <Button onClick={handleExploreModels} className="w-full mt-4">
+                Explore Models
+              </Button>
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </div>
+  </div>
+  </header>
+
+
+>>>>>>> a28133d (Updated navbar and theme consistency changes)
         {/* Hero Section */}
         <section id="home" className="relative min-h-screen flex items-center justify-center pt-28 md:pt-20 lg:pt-16">
 
