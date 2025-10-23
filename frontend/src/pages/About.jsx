@@ -362,7 +362,7 @@ const About = ({ darkMode, setDarkMode, onExploreModels }) => {
                   Check out our comprehensive contribution guide, join our Discord community, or reach out to our mentors for support.
                 </p>
                 <a
-                href="https://github.com/georgioupanayiotis/HackMentees/blob/main/CONTRIBUTING.md"
+                href="https://github.com/CodeMentees/HackMentees/blob/main/CONTRIBUTING.md"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-900 dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 dark:hover:bg-gray-200 transition-all duration-300 hover:scale-105 inline-block"
@@ -383,7 +383,7 @@ const About = ({ darkMode, setDarkMode, onExploreModels }) => {
           <p className="text-gray-600 dark:text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
             Join hundreds of developers contributing to open source. Your first PR starts here.
           </p>
-          <a href="https://github.com/georgioupanayiotis/HackMentees" target="_blank" rel="noopener noreferrer" className="bg-gray-900 dark:bg-white text-white dark:text-black px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-700 dark:hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-gray-400/20 dark:hover:shadow-white/20">
+          <a href="https://github.com/CodeMentees/HackMentees" target="_blank" rel="noopener noreferrer" className="bg-gray-900 dark:bg-white text-white dark:text-black px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-700 dark:hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-gray-400/20 dark:hover:shadow-white/20">
             Start Your Journey
           </a>
         </div>
