@@ -7,64 +7,7 @@ import ModelCard from "@/components/ModelCard";
 import  Sidebar  from "@/components/Sidebar"; 
 import  {Separator}  from "@/components/ui/separator"; 
 
-<<<<<<< HEAD
 import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card"; 
-=======
-// ✅ Navbar component
-const Navbar = ({ darkMode, setDarkMode }) => {
-  return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-gray-800">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
-        {/* Logo */}
-        <div className="flex items-center space-x-3">
-          <div className="bg-black dark:bg-white text-white dark:text-black font-bold w-9 h-9 flex items-center justify-center rounded-xl">
-            H
-          </div>
-          <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-            Hack<span className="text-gray-600 dark:text-gray-300">Mentees</span>
-          </h1>
-        </div>
-
-        {/* Links */}
-        <div className="flex space-x-8">
-          <a href="/" className="font-medium hover:text-gray-700 dark:hover:text-gray-300 transition">
-            Home
-          </a>
-          <a
-            href="/about"
-            className="font-medium text-gray-900 dark:text-white border-b-2 border-gray-900 dark:border-white pb-1"
-          >
-            About
-          </a>
-          <a href="/" className="font-medium hover:text-gray-700 dark:hover:text-gray-300 transition">
-            Contribute
-          </a>
-        </div>
-
-        {/* Right side buttons */}
-        <div className="flex items-center space-x-4">
-          <a
-            href="/models"
-            className="bg-black dark:bg-white text-white dark:text-black font-medium px-4 py-2 rounded-md hover:opacity-80 transition"
-          >
-            Explore Models
-          </a>
-
-          {/* Theme Toggle */}
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-2 bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-full hover:scale-110 transition-transform duration-300 shadow-md"
-          >
-            {darkMode ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-700" />}
-          </button>
-        </div>
-      </div>
-    </nav>
-  );
-};
-
-// ✅ TechIcon Component
->>>>>>> a28133d (Updated navbar and theme consistency changes)
 const TechIcon = ({ name, delay }) => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
@@ -97,12 +40,8 @@ const TechIcon = ({ name, delay }) => {
   );
 };
 
-<<<<<<< HEAD
 
 
-=======
-// ✅ FeatureCard Component
->>>>>>> a28133d (Updated navbar and theme consistency changes)
 const FeatureCard = ({ icon: Icon, title, description, delay }) => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
@@ -156,19 +95,12 @@ const ContributionStep = ({ number, title, description, delay }) => {
   );
 };
 
-<<<<<<< HEAD
 
 
 const About = ({ darkMode, setDarkMode, onExploreModels }) => {
   const [activeTab, setActiveTab] = useState('overview');
   const [headerVisible, setHeaderVisible] = useState(false);
   const [showModels, setShowModels] = useState(false);
-=======
-// ✅ Main About Component
-const About = ({ darkMode, setDarkMode,showModels, setShowModels, onExploreModels  }) => {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [headerVisible, setHeaderVisible] = useState(false);
->>>>>>> a28133d (Updated navbar and theme consistency changes)
 
 
 
@@ -176,7 +108,6 @@ const About = ({ darkMode, setDarkMode,showModels, setShowModels, onExploreModel
     setHeaderVisible(true);
   }, []);
 
-<<<<<<< HEAD
 
    if (showModels){
      return (
@@ -227,27 +158,13 @@ const About = ({ darkMode, setDarkMode,showModels, setShowModels, onExploreModel
   );
    }
 
-=======
-const handleExploreModels = () => {
-    if (onExploreModels) {
-      onExploreModels();
-    } else {
-      setShowModels(true);
-    }
-  };
->>>>>>> a28133d (Updated navbar and theme consistency changes)
 
   
   return (
     <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
-<<<<<<< HEAD
       {/* Theme Toggle */}
       
        <Navbar darkMode={darkMode} setDarkMode={setDarkMode}   onExploreModels={() => setShowModels(true)}  />
-=======
-      {/* Fixed Navbar */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
->>>>>>> a28133d (Updated navbar and theme consistency changes)
 
       {/* Main About Section */}
       <div className="max-w-7xl mx-auto px-6 py-32">
