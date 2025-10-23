@@ -173,7 +173,7 @@ export default function Home({ showModels, setShowModels, darkMode, setDarkMode 
                   className="hover:scale-105 transition-transform duration-300"
                   asChild
                 >
-                  <a href="https://github.com/georgioupanayiotis/HackMentees" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                  <a href="https://github.com/CodeMentees/HackMentees" target="_blank" rel="noopener noreferrer" className="flex items-center">
                     <Github className="w-5 h-5 mr-2" />
                     View on GitHub
                     <ExternalLink className="w-4 h-4 ml-2" />
@@ -185,7 +185,7 @@ export default function Home({ showModels, setShowModels, darkMode, setDarkMode 
                   className="hover:scale-105 transition-transform duration-300"
                   asChild
                 >
-                  <a href="https://github.com/georgioupanayiotis/HackMentees/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="flex items-center text-black dark:text-white">
+                  <a href="https://github.com/CodeMentees/HackMentees/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="flex items-center text-black dark:text-white">
                     <Zap className="w-5 h-5 mr-2 text-black dark:text-white" />
                     Start Contributing
                   </a>
@@ -211,7 +211,7 @@ export default function Home({ showModels, setShowModels, darkMode, setDarkMode 
               
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <Button variant="default" size="sm" className="hover:bg-muted/50" asChild>
-                  <a href="https://github.com/georgioupanayiotis/HackMentees" className="flex items-center">
+                  <a href="https://github.com/CodeMentees/HackMentees" className="flex items-center">
                     <Github className="w-4 h-4 mr-2" />
                     GitHub
                   </a>
