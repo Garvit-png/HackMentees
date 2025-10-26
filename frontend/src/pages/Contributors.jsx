@@ -65,8 +65,8 @@ const Contributors = () => {
         {/* Content */}
         {!loading && !error && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {contributors.map((contributor) => (
-              <ContributorCard key={contributor.id} contributor={contributor} />
+            {contributors.map((contributor, index) => (
+              <ContributorCard key={contributor.id} contributor={contributor} delay={index * 100}/>
             ))}
           </div>
         )}

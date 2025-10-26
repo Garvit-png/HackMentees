@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -12,7 +12,10 @@ function App() {
     return localStorage.getItem("theme") === "dark";
   });
 
+  const navigate = useNavigate(); //
+
   const handleExploreModels = () => {
+    navigate("/"); //
     setShowModels(true);
   };
 
@@ -30,7 +33,11 @@ function App() {
   return (
     <>
       {/* Global Navbar:visible on all pages */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        onExploreModels={handleExploreModels}
+      />
 
       <div className={`min-h-screen ${darkMode ? "bg-background text-foreground" : "bg-white text-gray-900"}`}>
         <Routes>
