@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import Navbar from "../components/Navbar"; 
+//import Navbar from "../components/Navbar"; 
 import {
   Tabs,
   TabsList,
@@ -74,11 +74,6 @@ export default function Home({ showModels, setShowModels, darkMode, setDarkMode 
   return (
     <div className={darkMode ? "dark" : ""}>
       {/* ✅ Use Navbar component here */}
-      <Navbar 
-        onExploreModels={handleExploreModels} 
-        darkMode={darkMode} 
-        setDarkMode={setDarkMode} 
-      />
         {/* Hero Section */}
         <section id="home" className="relative min-h-screen flex items-center justify-center pt-28 md:pt-20 lg:pt-16">
 
