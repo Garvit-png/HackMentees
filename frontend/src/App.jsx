@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Contributors from "./pages/Contributors"; //
+
 
 function App() {
   const [showModels, setShowModels] = useState(false);
@@ -54,6 +56,17 @@ function App() {
               />
             }
           />
+
+          <Route
+            path="/contributors"
+            element={
+              <Contributors
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
+              />
+            }
+          />
+
         </Routes>
       </div>
     </>
