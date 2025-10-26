@@ -26,21 +26,16 @@ const ContributorCard = ({ contributor, delay }) => {
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
     }`}
     >{/**/}
-      <CardHeader className="flex flex-col items-center text-center">
+      <CardHeader className="flex flex-col items-center text-center flex-grow">
         <Avatar className="w-24 h-24 mb-4 border-4 border-transparent group-hover:border-primary transition-colors">
           <AvatarImage src={avatar_url} alt={`${login}'s avatar`} />
           <AvatarFallback>{fallback}</AvatarFallback>
         </Avatar>
         <CardTitle className="text-xl font-bold">{login}</CardTitle>
-      </CardHeader>
-      <CardContent className="flex-grow flex flex-col items-center justify-center text-center">
         <Badge variant="secondary" className="mb-4">
           {contributions} {contributions > 1 ? 'Contributions' : 'Contribution'}
         </Badge>
-        <p className="text-sm text-muted-foreground">
-          Thank you for helping build HackMentees!
-        </p>
-      </CardContent>
+      </CardHeader>
       <CardFooter>
         <Button asChild variant="outline" className="w-full group">
           <a href={html_url} target="_blank" rel="noopener noreferrer">
