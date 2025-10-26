@@ -108,7 +108,7 @@ const Navbar = ({ onExploreModels, darkMode, setDarkMode }) => {
                     </SheetClose> 
 
                     <SheetClose asChild>
-                      <button onClick={() => scrollToSection('contribute')} className={`text-lg font-medium text-left hover:text-primary transition-colors py-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Contribute</button>
+                      <button onClick={() => scrollToSection('contribute')} className={`text-lg font-medium text-left hover:text-primary transition-colors py-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Want to contribute?</button>
                     </SheetClose>
                   </div>
 
@@ -155,7 +155,7 @@ const Navbar = ({ onExploreModels, darkMode, setDarkMode }) => {
 
               <NavigationMenuItem>
                 <NavigationMenuLink className={`font-medium text-sm px-4 py-2 hover:text-primary transition-colors cursor-pointer ${darkMode ? 'text-white' : 'text-gray-900'}`} onClick={() => scrollToSection('contribute')}>
-                  Contribute
+                  Want to contribute?
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
