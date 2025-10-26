@@ -101,6 +101,12 @@ const Navbar = ({ onExploreModels, darkMode, setDarkMode }) => {
                     <SheetClose asChild>
                       <Link to="/about" className={`text-lg font-medium text-left hover:text-primary transition-colors py-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>About</Link>
                     </SheetClose>
+
+                    {/* Contributors */}
+                    <SheetClose asChild>
+                      <Link to="/contributors" className={`text-lg font-medium text-left hover:text-primary transition-colors py-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Contributors</Link>
+                    </SheetClose> 
+
                     <SheetClose asChild>
                       <button onClick={() => scrollToSection('contribute')} className={`text-lg font-medium text-left hover:text-primary transition-colors py-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Contribute</button>
                     </SheetClose>
@@ -140,6 +146,13 @@ const Navbar = ({ onExploreModels, darkMode, setDarkMode }) => {
                   <Link to="/about">About</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild className={`font-medium text-sm px-4 py-2 hover:text-primary transition-colors cursor-pointer ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  <Link to="/contributors">Contributors</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
               <NavigationMenuItem>
                 <NavigationMenuLink className={`font-medium text-sm px-4 py-2 hover:text-primary transition-colors cursor-pointer ${darkMode ? 'text-white' : 'text-gray-900'}`} onClick={() => scrollToSection('contribute')}>
                   Contribute
