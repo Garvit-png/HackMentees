@@ -15,7 +15,8 @@ function App() {
   const navigate = useNavigate(); //
 
   const handleExploreModels = () => {
-    navigate("/"); //
+    navigate("/");
+    window.scrollTo(0, 0);
     setShowModels(true);
   };
 

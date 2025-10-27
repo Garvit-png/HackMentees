@@ -1,47 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Code, Sparkles, Users, Zap, Brain, Palette, Github, BookOpen, Rocket, CheckCircle, ArrowRight,ChevronRight} from 'lucide-react';
-import Navbar from "../components/Navbar";
-import {models}  from "@/data/models";
-import ModelCard from "@/components/ModelCard";
-import  Sidebar  from "@/components/Sidebar"; 
-import  {Separator}  from "@/components/ui/separator"; 
+import { Code, Sparkles, Users, Zap, Brain, Palette, Github, BookOpen, Rocket, CheckCircle, ArrowRight } from 'lucide-react'; // Removed ChevronRight as it's not used here
+import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 
-import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card"; 
-const TechIcon = ({ name, delay }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), delay);
-    return () => clearTimeout(timer);
-  }, [delay]);
-
-  const icons = {
-    React: '⚛️',
-    Vite: '⚡',
-    Python: '🐍',
-    TensorFlow: '🧠',
-    'scikit-learn': '📊',
-    GitHub: '🐙',
-  };
-
-  return (
-    <div
-      className={`transform transition-all duration-700 ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-      }`}
-    >
-      <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl p-6 hover:border-gray-400 dark:hover:border-white/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-gray-400/20 dark:hover:shadow-white/10 group">
-        <div className="text-4xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
-          {icons[name]}
-        </div>
-        <div className="text-gray-900 dark:text-white font-semibold text-sm">{name}</div>
-      </div>
-    </div>
-  );
-};
-
-
-
+// --- FeatureCard Component ---
 const FeatureCard = ({ icon: Icon, title, description, delay }) => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
@@ -66,7 +28,7 @@ const FeatureCard = ({ icon: Icon, title, description, delay }) => {
   );
 };
 
-// ✅ ContributionStep Component
+// --- ContributionStep Component ---
 const ContributionStep = ({ number, title, description, delay }) => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
@@ -95,80 +57,54 @@ const ContributionStep = ({ number, title, description, delay }) => {
   );
 };
 
+// --- TechIcon Component ---
+const TechIcon = ({ name, delay }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    let timer = null; // Initialize timer
+    timer = setTimeout(() => setIsVisible(true), delay);
+    return () => { if (timer) clearTimeout(timer); }; // Clear timeout on unmount
+  }, [delay]);
 
+  const icons = {
+    React: '⚛️',
+    Vite: '⚡',
+    Python: '🐍',
+    TensorFlow: '🧠',
+    'scikit-learn': '📊',
+    GitHub: '🐙',
+  };
 
-const About = ({ darkMode, setDarkMode, onExploreModels }) => {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [headerVisible, setHeaderVisible] = useState(false);
-  const [showModels, setShowModels] = useState(false);
-
-
-
-    useEffect(() => {
-    setHeaderVisible(true);
-  }, []);
-
-
-   if (showModels){
-     return (
-    <div className={darkMode ? "dark bg-background text-foreground min-h-screen" : "bg-background text-foreground min-h-screen"}>
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center">
-          <Button 
-            variant="ghost" 
-            onClick={() => setShowModels(false)}
-            className="flex items-center gap-2"
-          >
-            <ChevronRight className="h-4 w-4 rotate-180" />
-            Back to About
-          </Button>
-          <Separator orientation="vertical" className="mx-4 h-6" />
-          <h1 className="text-lg font-semibold">AI Model Hub</h1>
+  return (
+    <div
+      className={`transform transition-all duration-700 ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+      }`}
+    >
+      <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl p-6 hover:border-gray-400 dark:hover:border-white/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-gray-400/20 dark:hover:shadow-white/10 group">
+        <div className="text-4xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
+          {icons[name]}
         </div>
-      </header>
-
-      <div className="flex">
-        <Sidebar isOpen={true} onClose={() => {}} />
-        <main className="flex-1 p-6">
-          <div className="container">
-            <div className="mb-8">
-              <h2 className="text-3xl font-bold tracking-tight mb-2">Available Models</h2>
-              <p className="text-muted-foreground">Explore our collection of machine learning models</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {models.map((model) => (
-                <ModelCard key={model.id} model={model} />
-              ))}
-            </div>
-            
-            {models.length === 0 && (
-              <Card className="text-center py-12">
-                <CardContent className="pt-6">
-                  <Brain className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                  <CardTitle className="mb-2">No models yet</CardTitle>
-                  <CardDescription>Be the first to contribute a model!</CardDescription>
-                </CardContent>
-              </Card>
-            )}
-          </div>
-        </main>
+        <div className="text-gray-900 dark:text-white font-semibold text-sm">{name}</div>
       </div>
     </div>
   );
-   }
+};
 
 
-  
+// --- About Component ---
+// Removed unused props like onExploreModels
+const About = ({ darkMode, setDarkMode }) => {
+  const [activeTab, setActiveTab] = useState('overview');
+
   return (
     <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
-      {/* Theme Toggle */}
-      
-       <Navbar darkMode={darkMode} setDarkMode={setDarkMode}   onExploreModels={() => setShowModels(true)}  />
+      {/* 2. REMOVED the duplicate Navbar component from here */}
 
       {/* Main About Section */}
       <div className="max-w-7xl mx-auto px-6 py-32">
-        <div className="text-center mb-16">
+        {/* ... rest of the About page content ... */}
+         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-500 bg-clip-text text-transparent">
             Why Choose HackMentees?
           </h2>
@@ -200,7 +136,8 @@ const About = ({ darkMode, setDarkMode, onExploreModels }) => {
 
       {/* What is HackMentees */}
       <div className="bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-gray-900/30 dark:to-black py-20">
-        <div className="max-w-7xl mx-auto px-6">
+         {/* ... rest of the About page content ... */}
+         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white">What is HackMentees?</h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg max-w-3xl mx-auto">
@@ -228,7 +165,7 @@ const About = ({ darkMode, setDarkMode, onExploreModels }) => {
           {/* Tab Content */}
           <div className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-black border border-gray-200 dark:border-gray-800 rounded-2xl p-12 shadow-lg">
             {activeTab === 'overview' && (
-              <div className="space-y-8">
+             <div className="space-y-8">
                 <div>
                   <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Project Overview</h3>
                   <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
@@ -253,9 +190,8 @@ const About = ({ darkMode, setDarkMode, onExploreModels }) => {
                 </div>
               </div>
             )}
-
             {activeTab === 'ml' && (
-              <div className="space-y-6">
+             <div className="space-y-6">
                 <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">For ML Contributors</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
@@ -277,9 +213,8 @@ const About = ({ darkMode, setDarkMode, onExploreModels }) => {
                 </div>
               </div>
             )}
-
-            {activeTab === 'frontend' && (
-              <div className="space-y-6">
+             {activeTab === 'frontend' && (
+             <div className="space-y-6">
                 <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">For Frontend Contributors</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
@@ -307,7 +242,8 @@ const About = ({ darkMode, setDarkMode, onExploreModels }) => {
 
       {/* Tech Stack */}
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="text-center mb-16">
+         {/* ... rest of the About page content ... */}
+          <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white">Technology Stack</h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg">Powered by modern, industry-standard technologies</p>
         </div>
@@ -324,7 +260,8 @@ const About = ({ darkMode, setDarkMode, onExploreModels }) => {
 
       {/* How to Contribute */}
       <div className="bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-gray-900/30 dark:to-black py-20">
-        <div className="max-w-5xl mx-auto px-6">
+         {/* ... rest of the About page content ... */}
+         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white">How to Contribute</h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg">Get started with your first contribution in three simple steps</p>
@@ -377,7 +314,8 @@ const About = ({ darkMode, setDarkMode, onExploreModels }) => {
 
       {/* Footer CTA */}
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="bg-gradient-to-r from-gray-100 to-gray-50 dark:from-gray-900 dark:to-black border border-gray-200 dark:border-gray-800 rounded-3xl p-12 text-center shadow-lg">
+         {/* ... rest of the About page content ... */}
+          <div className="bg-gradient-to-r from-gray-100 to-gray-50 dark:from-gray-900 dark:to-black border border-gray-200 dark:border-gray-800 rounded-3xl p-12 text-center shadow-lg">
           <Code className="w-16 h-16 mx-auto mb-6 text-gray-900 dark:text-white" />
           <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Ready to Make an Impact?</h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
