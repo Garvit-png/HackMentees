@@ -1,13 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- ✅ Basic Meta -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
+    <title>Hackmentees | Frontend</title>
+    <meta name="description" content="Hackmentees – A beginner-friendly hub for Machine Learning models and frontend integration." />
+    <meta name="keywords" content="Hackmentees, Machine Learning, Frontend, React, AI Projects, Open Source" />
+    <meta name="author" content="Hackmentees Contributors" />
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="apple-touch-icon" href="/vite.svg" />
+
+    <!-- ✅ Font and Icon Preloads -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ✅ Theme Colors -->
+    <meta name="theme-color" content="#090909" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- ✅ Open Graph / SEO Preview -->
+    <meta property="og:title" content="Hackmentees Frontend" />
+    <meta property="og:description" content="Explore ML models and UI integration in one unified hub." />
+    <meta property="og:image" content="/preview.png" />
+    <meta property="og:type" content="website" />
+
+    <!-- ✅ Optional: Add background animation or video styling -->
+    <style>
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #f8fafc;
+        overflow-x: hidden;
+      }
+
+      #root {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.8s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Optional: video background setup */
+      video.bg-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        opacity: 0.3;
+        filter: blur(2px);
+      }
+    </style>
   </head>
+
   <body>
+    <!-- 🔥 Optional Video Background -->
+    <!-- <video autoplay muted loop class="bg-video">
+      <source src="/background.mp4" type="video/mp4" />
+    </video> -->
+
     <div id="root"></div>
+
+    <!-- ✅ Main React Entry -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
